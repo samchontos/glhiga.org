@@ -191,6 +191,14 @@
   .contact-item address{font-style:normal;color:#3a3a3a;font-size:1rem;line-height:1.6}
   .contact-item a{color:var(--c-051e3a);font-size:1.05rem;font-weight:600;text-decoration:none;transition:.2s}
   .contact-item a:hover{color:var(--c-277ccb)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  .contact-form form{background: var(--gray);border-radius: 14px;padding: 34px;display: grid;row-gap: 15px;}
+  .fs-input, .fs-select {appearance: none;border-radius: 0.375rem;border-width: 0;box-shadow: #94a3b8 0 0 0 1px inset;color: var(--c-051e3a);font-size: 1rem;height: 2.5rem;line-height: 1.5rem;outline: none;padding-left: 0.75rem;padding-right: 0.75rem;}
+  .fs-label {color: var(--c-051e3a);display: block;font-size: 0.875rem;font-weight: 500;line-height: 1.25rem;}
+  .fs-textarea {appearance: none;border-radius: 0.375rem;border-width: 0;box-shadow: #94a3b8 0 0 0 1px inset;color: var(--c-051e3a);font-size: 1rem;line-height: 1.5rem;outline: none;padding: 0.5rem 0.75rem;resize: vertical;
+  }
+  .fs-button {background-color: var(--c-277ccb);border-radius: 0.375rem;color: white;cursor: pointer;font-size: 0.875rem;
+  font-weight: 500;line-height: 1rem;padding: 1rem 2rem;transition-duration: 200ms;transition-property: background-color;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); border: none;}
   @media(max-width:560px){ .page-hero h1{font-size:1.8rem} .page-hero{padding:60px 0} .contact-card{padding:32px 24px} }
 </style>
 </head>
@@ -221,28 +229,60 @@
 
 <section class="contact-section">
   <div class="container">
-    <div class="contact-card">
-      <h2 class="contact-name">Georgia Life &amp; Health Insurance Guaranty Association</h2>
-      <div class="contact-item">
-        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></span>
-        <div>
-          <div class="contact-label">Address</div>
-          <address>3700 Crestwood Parkway, NW, Suite 400<br>Duluth, GA 30096</address>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2 class="contact-name">Georgia Life &amp; Health Insurance Guaranty Association</h2>
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <div class="contact-label">Address</div>
+            <address>3700 Crestwood Parkway, NW, Suite 400<br>Duluth, GA 30096</address>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <div class="contact-label">Phone Number</div>
+            <a href="tel:+17706219835">Main Line: 770.621.9835</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <div class="contact-label">Email</div>
+            <a href="mailto:Support@gaiga.org">Support@gaiga.org</a>
+          </div>
         </div>
       </div>
-      <div class="contact-item">
-        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <div>
-          <div class="contact-label">Phone Number</div>
-          <a href="tel:+17706219835">Main Line: 770.621.9835</a>
-        </div>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <div>
-          <div class="contact-label">Email</div>
-          <a href="mailto:Support@gaiga.org">Support@gaiga.org</a>
-        </div>
+      <div class="contact-form">  
+        <form id="my-form">
+          <div class="fs-field">
+            <label class="fs-label" for="name">Full Name</label>
+            <input class="fs-input" id="name" name="name" required />
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="email">Email Address</label>
+            <input class="fs-input" id="email" name="email" required />
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="number">Phone Number</label>
+            <input class="fs-input" id="number" name="number" />
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="message">Inquiry Message</label>
+            <textarea
+              class="fs-textarea"
+              id="message"
+              name="message"
+              required
+            ></textarea>
+          </div>
+          <div class="fs-button-group">
+            <button class="fs-button" type="submit">Submit</button>
+          </div>
+        </form>
+        <div data-fs-success>Thanks for your submission!</div>
+        <div data-fs-error>Oops! There was a problem submitting your form.</div>
       </div>
     </div>
   </div>
@@ -293,7 +333,18 @@
     </div>
   </div>
 </footer>
-
+<script>
+  window.formspree =
+    window.formspree ||
+    function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+  formspree("initForm", {
+    formElement: "#my-form",
+    formId: "mpqvendz",
+  });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script>
   function toggleMenu(btn){
     var links=document.getElementById('navLinks');
