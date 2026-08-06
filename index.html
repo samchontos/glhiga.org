@@ -433,7 +433,35 @@
       document.removeEventListener('keydown',trap,true);
       if(lastFocus && lastFocus.focus){ lastFocus.focus(); }
     }
+    /* Keep keyboard focus inside the bar and block Escape (acceptance is required) */
+    function trap(e){
+      if(e.key==='Escape'){ e.preventDefault(); return; }
+      if(e.key!=='Tab') return;
+      var f=bar.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),[tabindex="0"]');
+      if(!f.length) return;
+      var first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+
+    agree.addEventListener('change',function(){
+      accept.disabled=!agree.checked;
+      if(agree.checked) note.classList.remove('show');
+    });
+    accept.addEventListener('click',function(){
+      if(!read){ note.textContent='Please scroll through and read the terms first.'; note.classList.add('show'); details.focus(); return; }
+      if(!agree.checked){ note.textContent='Please check the box to agree before continuing.'; note.classList.add('show'); return; }
+      safeSet(KEY,'1'); close();
+    });
+    decline.addEventListener('click',function(){
+      note.textContent='You must read and accept the Terms & Conditions to use this website.';
+      note.classList.add('show');
+      details.focus();
+    });
+
+    if(safeGet(KEY)!=='1'){ setTimeout(open,400); }
   })();
+
 </script>
 </body>
 </html>
