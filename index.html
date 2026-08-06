@@ -117,7 +117,63 @@
   .notice p{color:#33415a;font-size:.95rem;font-weight:400}
   .announce hr{border:none;border-top:1px solid #d7dce4;margin:18px 0}
   .announce .btn{align-self:flex-start;margin-top:8px}
-
+  /* ===== Terms & Conditions bottom bar ===== */
+  .tc-block{position:fixed;inset:0;z-index:1990;display:none;background:rgba(3,12,30,.55)}
+  .tc-block.show{display:block}
+  body.tc-lock{overflow:hidden}
+  .tc-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:2000;
+    transform:translateY(110%);transition:transform .45s ease;
+    background:#fff;color:var(--c-051e3a);
+    border-top:3px solid var(--c-277ccb);
+    box-shadow:0 -8px 30px rgba(3,12,30,.22);
+  }
+  .tc-bar.show{transform:translateY(0)}
+  [data-theme="dark"] .tc-bar{background:#0a1730;color:#e8eef6}
+  .tc-bar__inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .tc-bar__text{flex:1 1 340px;min-width:260px}
+  .tc-bar__text h2{font-size:1.02rem;font-weight:700;color:var(--c-01418e);margin-bottom:4px}
+  [data-theme="dark"] .tc-bar__text h2{color:var(--c-76b9fc)}
+  .tc-bar__text p{font-size:.85rem;line-height:1.5;margin:0}
+  .tc-details{
+    max-height:150px;overflow-y:auto;margin-top:10px;padding:10px 14px;
+    border:1px solid var(--line);border-radius:6px;font-size:.82rem;line-height:1.55;
+  }
+  [data-theme="dark"] .tc-details{border-color:rgba(255,255,255,.15)}
+  .tc-details h3{font-size:.86rem;color:var(--c-01418e);margin:10px 0 4px}
+  [data-theme="dark"] .tc-details h3{color:var(--c-76b9fc)}
+  .tc-details h3:first-child{margin-top:0}
+  .tc-details p{margin-bottom:8px}
+  .tc-hint{font-size:.8rem;font-weight:600;color:var(--c-277ccb);margin-top:8px}
+  [data-theme="dark"] .tc-hint{color:var(--c-76b9fc)}
+  .tc-hint.done{display:none}
+  .tc-bar__actions{flex:0 0 auto;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+  .tc-check{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;cursor:pointer;max-width:340px}
+  .tc-check input{width:18px;height:18px;margin-top:1px;flex:0 0 auto;cursor:pointer}
+  .tc-buttons{display:flex;gap:10px;flex-wrap:wrap}
+  .tc-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:'Montserrat',sans-serif;font-weight:600;font-size:.88rem;
+    padding:10px 22px;border-radius:6px;cursor:pointer;border:1.5px solid var(--c-277ccb);
+  }
+  .tc-btn--accept{background:var(--c-277ccb);color:#fff}
+  .tc-btn--accept:disabled{opacity:.45;cursor:not-allowed}
+  .tc-btn--decline{background:transparent;color:var(--c-277ccb)}
+  [data-theme="dark"] .tc-btn{border-color:var(--c-76b9fc)}
+  [data-theme="dark"] .tc-btn--accept{background:var(--c-76b9fc);color:var(--c-001539)}
+  [data-theme="dark"] .tc-btn--decline{color:var(--c-76b9fc)}
+  .tc-note{font-size:.8rem;color:#c0392b;display:none}
+  [data-theme="dark"] .tc-note{color:#ff9b8a}
+  .tc-note.show{display:block}
+  @media(max-width:640px){
+    .tc-bar__inner{padding:14px 20px;gap:14px}
+    .tc-bar__actions{width:100%}
+    .tc-buttons{width:100%}
+    .tc-btn{flex:1 1 auto}
+  }
   /* footer */
   footer{background:linear-gradient(160deg,var(--c-001539) 0%,var(--c-277ccb) 135%);color:#fff}
   .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding:58px 0 46px;align-items:start}
@@ -291,8 +347,40 @@
     </div>
   </div>
 </footer>
-
-<script>
+<!-- TERMS & CONDITIONS BOTTOM BAR -->
+<div class="tc-block" id="tcBlock"></div>
+<div class="tc-bar" id="tcBar" role="region" aria-label="Terms and Conditions">
+  <div class="tc-bar__inner">
+    <div class="tc-bar__text">
+      <h2>Terms &amp; Conditions</h2>
+      <p>Please read the terms below. You must scroll through and accept them to use this website.</p>
+      <div class="tc-details" id="tcDetails" tabindex="0" role="document" aria-label="Full terms and conditions">
+        <h3>Informational Use Only</h3>
+        <p>The information provided on this website is for general informational purposes only and does not constitute legal, financial, or insurance advice. Coverage and protections are governed by Georgia law and the applicable statutes, and specific outcomes may vary by individual circumstance.</p>
+        <h3>No Guarantee of Coverage</h3>
+        <p>Nothing on this site creates a contract or guarantee of coverage. Eligibility for protection is determined in accordance with applicable Georgia statutes and the governing plan documents.</p>
+        <h3>Do Not Submit Sensitive Information</h3>
+        <p>This website should not be used to submit claims, personal, or time-sensitive information. Please contact us directly by phone for those matters.</p>
+        <h3>External Links</h3>
+        <p>This site may link to third-party websites. We are not responsible for the content, accuracy, or privacy practices of external sites.</p>
+        <p><em>This is placeholder language. Please replace it with your organization's official terms and conditions before publishing.</em></p>
+      </div>
+      <p class="tc-hint" id="tcHint">Please scroll to the end of the terms to continue.</p>
+    </div>
+    <div class="tc-bar__actions">
+      <label class="tc-check" for="tcAgree">
+        <input type="checkbox" id="tcAgree" disabled>
+        <span>I have read and agree to the Terms &amp; Conditions.</span>
+      </label>
+      <div class="tc-buttons">
+        <button type="button" class="tc-btn tc-btn--accept" id="tcAccept" disabled>Accept</button>
+        <button type="button" class="tc-btn tc-btn--decline" id="tcDecline">Decline</button>
+      </div>
+      <p class="tc-note" id="tcNote">You must read and accept the Terms &amp; Conditions to use this website.</p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
   function toggleMenu(btn){
     var links=document.getElementById('navLinks');
     var open=links.classList.toggle('open');
@@ -301,6 +389,51 @@
   document.querySelectorAll('#navLinks a').forEach(function(a){
     a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
   });
+  /* ---- Terms & Conditions (must be read to interact with the page) ---- */
+  (function(){
+    var KEY='glhiga-terms-accepted';
+    var block=document.getElementById('tcBlock');
+    var bar=document.getElementById('tcBar');
+    var details=document.getElementById('tcDetails');
+    var hint=document.getElementById('tcHint');
+    var agree=document.getElementById('tcAgree');
+    var accept=document.getElementById('tcAccept');
+    var decline=document.getElementById('tcDecline');
+    var note=document.getElementById('tcNote');
+    var lastFocus=null, read=false;
+
+    function markRead(){
+      if(read)return;
+      read=true;
+      agree.disabled=false;
+      hint.classList.add('done');
+    }
+    function checkScrolled(){
+      // Enable once the reader reaches the bottom (or if there is nothing to scroll)
+      if(details.scrollTop + details.clientHeight >= details.scrollHeight - 4){ markRead(); }
+    }
+    details.addEventListener('scroll',checkScrolled);
+
+    function open(){
+      lastFocus=document.activeElement;
+      block.classList.add('show');
+      bar.classList.add('show');
+      document.body.classList.add('tc-lock');
+      document.addEventListener('keydown',trap,true);
+      setTimeout(function(){
+        details.focus();
+        // If the terms fit without scrolling, count them as read
+        if(details.scrollHeight <= details.clientHeight + 4){ markRead(); }
+      },120);
+    }
+    function close(){
+      block.classList.remove('show');
+      bar.classList.remove('show');
+      document.body.classList.remove('tc-lock');
+      document.removeEventListener('keydown',trap,true);
+      if(lastFocus && lastFocus.focus){ lastFocus.focus(); }
+    }
+  })();
 </script>
 </body>
 </html>
