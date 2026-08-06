@@ -117,6 +117,10 @@
   .notice p{color:#33415a;font-size:.95rem;font-weight:400}
   .announce hr{border:none;border-top:1px solid #d7dce4;margin:18px 0}
   .announce .btn{align-self:flex-start;margin-top:8px}
+  /* ===== Smooth "sway" between themes ===== */
+  body,header,.peace,.announce,.card,.nav__links,.nav__links a,.btn,.a11y__btn{
+    transition:background-color .5s ease,color .5s ease,border-color .5s ease,box-shadow .5s ease;
+  }
   /* ===== Terms & Conditions bottom bar ===== */
   .tc-block{position:fixed;inset:0;z-index:1990;display:none;background:rgba(3,12,30,.55)}
   .tc-block.show{display:block}
