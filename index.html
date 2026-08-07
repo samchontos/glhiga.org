@@ -181,6 +181,7 @@
     /* ===== Accessibility toolbar (theme + text size) ===== */
   .nav__logo{margin-right:auto;flex:0 0 auto}
   .a11y{display:inline-flex;align-items:center;gap:9px;margin-left:24px;margin-right:34px;padding-right:2px}
+
   @media(max-width:1040px){.a11y{margin-right:14px}}
   .a11y__btn{
     display:inline-flex;align-items:center;justify-content:center;
@@ -233,6 +234,9 @@
   .footer__bottom p{font-size:.76rem;color:#cfe0f2;font-weight:400}
 
   /*========== responsive ============*/
+  @media(min-width:1041px) and (max-width:1400px){
+    .nav__links{gap:18px}
+  }
   @media(max-width:1040px){
     .nav__links{
       position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;
